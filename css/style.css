@@ -1,0 +1,343 @@
+:root[data-theme="light"] {
+    --text: #36385e;
+    --background: #9091c1;
+    --primary: #ccd2f0;
+    --secondary: #f8ded8;
+    --accent: #dfd8df;
+}
+  
+:root[data-theme="dark"] {
+    --text: #f2E9E4;
+    --background: #22223B;
+    --primary: #4A4E69;
+    --secondary: #C9ADA7;
+    --accent: #9A8C98;
+}
+  
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}  
+
+body {
+    background-color: var(--background);
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, p {
+    color: var(--text);
+    font-weight: 700;
+}
+
+html {font-size: 110%;} /* 16px */
+
+h1 {font-size: 2.489rem; /* 39.84px */}
+
+h2 {font-size: 2.074rem; /* 33.12px */}
+
+h3 {font-size: 1.728rem; /* 27.68px */}
+
+h4 {font-size: 1.440rem; /* 23.04px */}
+
+h5 {font-size: 1.200rem; /* 19.2px */}
+
+small {font-size: 0.833rem; /* 13.28px */}
+
+
+footer {
+    background-color: var(--secondary);
+    color: var(--text);
+    display: flex;
+    height: 5vh;
+    padding: 60px;
+    justify-content: space-evenly;
+}
+
+button {
+    border: none;
+    padding: 10px 10px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: var(--secondary);
+    color: var(--text);
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 2px 15px;
+    height: 35px;
+    width: 100px;
+}
+
+header {
+    padding-bottom: 120px;
+}
+
+input{
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    width: 50%;
+    resize: none;
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    outline: none;
+    color: var(--primary);
+    background-color: white;
+}
+
+
+/* CABEÇALHO */
+.cabecalho {
+    display: flex;
+    top: 0px;
+    width: 100%;
+    position: fixed;
+    background-color: var(--primary);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecalho .menu img {
+    float: left;
+    width: 66px;
+    height: 66px;
+}
+  
+.cabecalho .menu a {
+    float: left;
+    display: flex;
+    color: var(--text);
+    text-align: center;
+    padding: 17px 16px;
+    text-decoration: none;
+    font-size: 24px;
+    border-bottom: 5px solid transparent;
+}
+  
+.cabecalho .menu a:hover {
+    border-bottom: 5px solid var(--accent);
+}
+  
+.cabecalho .menu a.active {
+    border-bottom: 5px solid var(--accent);
+}
+
+
+/* INDEX */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 1s ease-out;
+}
+  
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.index-group {
+    display: flex;
+    column-gap: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.index-img img {
+    width: 20vw;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2.4rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.containerCards {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 50px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    text-align: center;
+    color: var(--text);
+    border-radius: 10px;
+    box-shadow: 
+    0 1px 1px rgba(0, 0, 0, 0.1), 
+    0 2px 2px rgba(0, 0, 0, 0.1), 
+    0 16px 16px rgba(0, 0, 0, 0.1);
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    transition: transform calc(850ms * 1.5) cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.card::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: linear-gradient( 
+    to bottom, rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 0.79) 100%);
+    transform: translateY(-50%);
+    transition: transform calc(850ms * 2) cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateY(0);
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    transition: transform var(850ms) cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+    transform: translateY(calc(100% - 4.5rem));
+}
+
+.content h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.2;
+    color: white;
+}
+
+.content p {
+    padding-top: 1.9rem;  
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.35;
+    color: white;
+}
+
+.card:hover:after, .card:focus-within:after {
+    transform: translateY(-50%);
+}
+
+.card:hover .content, .card:focus-within .content {
+    transform: translateY(0);
+}
+
+/* Type Effect Style */
+.typing {
+    text-align: center;
+    margin: 60px auto;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text);
+}
+
+.typing::after {
+    content: '|';
+    opacity: 1;
+    margin-left: 5px;
+    display: inline-block;
+    animation: blink .7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* GALERIA */
+.galery {
+    width: 1400px;
+    margin: 20px auto;
+    columns: 4;
+    column-gap: 20px;
+}
+
+.galery .portrait {
+    width: 100%;
+    margin-bottom: 20px;
+    break-inside: avoid;
+}
+
+.galery .portrait img {
+    width: 300%;
+    max-width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+
+/* CONTATO */
+.contato-box {
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
+    align-items: center;
+    text-align: center;
+}
+
+.contato {
+    display: flex;
+    align-items: center;
+    background-color: var(--accent);
+    border-radius: 20px;
+    height: 750px; /* Defina uma altura fixa para a seção */
+    width: 1000px; /* Defina uma largura fixa para a seção */
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 2px 15px;
+}
+
+.cadastro-form {
+    flex-direction: column;
+    border-right: 2px solid var(--secondary);
+    width: 50%;
+}
+
+.sugestao-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;  
+    align-items: center; 
+}
+
+.sugestao-form img {
+    width: 400px;
+    margin: 20px;
+    border-radius: 15px;
+}
+
+.sugestao-input {
+    border: none;
+    border-radius: 8px;
+    height: 50px;
+    width: 70%;
+    resize: none;
+    padding: 6px;
+}
+
+.formulario {
+    padding: 20px;
+}
